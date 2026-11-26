@@ -153,14 +153,14 @@ namespace YetAnotherGarminConnectClient
                 result.AuthStatus = _authStatus;
                 _logger.Error(ex, ex.Message);
                 result.Logs = Logger.GetLogs();
-                result.ErrorLogs = Logger.GetErrorLogs().Append(ex.Message).ToList();
+                result.ErrorLogs = Logger.GetErrorLogs();
             }
             catch (Exception ex)
             {
                 result.AuthStatus = _authStatus;
                 _logger.Error(ex, ex.Message);
                 result.Logs = Logger.GetLogs();
-                result.ErrorLogs = Logger.GetErrorLogs().Append(ex.Message).ToList();
+                result.ErrorLogs = Logger.GetErrorLogs();
             }
 
             return result;

@@ -84,8 +84,8 @@ public static class BloodPressureEndpoints
                 }
 
                 logger.LogError("Blood pressure upload failed. AuthStatus: {AuthStatus}, LastError: {LastError}",
-                    uploadResult.AuthStatus, uploadResult.ErrorLogs?.LastOrDefault());
-                return Results.BadRequest($"AuthStatus: {uploadResult.AuthStatus}, Last Error log: {uploadResult.ErrorLogs?.LastOrDefault()}");
+                    uploadResult.AuthStatus, string.Join(" | ", (uploadResult.ErrorLogs ?? Enumerable.Empty<string>()).TakeLast(3)));
+                return Results.BadRequest($"AuthStatus: {uploadResult.AuthStatus}, Last Error log: {string.Join(" | ", (uploadResult.ErrorLogs ?? Enumerable.Empty<string>()).TakeLast(3))}");
             }
             catch (GarminClientException ex)
             {
