@@ -141,8 +141,8 @@ public static class UploadEndpoints
                         return Results.Ok(new { clientId, uploadResult });
                     }
                     logger.LogError("Weight upload failed. AuthStatus: {AuthStatus}, LastError: {LastError}",
-                        uploadResult.AuthStatus, uploadResult.ErrorLogs.LastOrDefault());
-                    return Results.BadRequest($"AuthStatus: {uploadResult.AuthStatus}, Last Error log: {uploadResult.ErrorLogs.LastOrDefault()}");
+                        uploadResult.AuthStatus, uploadResult.ErrorLogs?.LastOrDefault());
+                    return Results.BadRequest($"AuthStatus: {uploadResult.AuthStatus}, Last Error log: {uploadResult.ErrorLogs?.LastOrDefault()}");
                 }
             }
             catch (GarminClientException ex)
