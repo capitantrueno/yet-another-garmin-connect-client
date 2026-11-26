@@ -1,14 +1,14 @@
 # Base runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
-# ASP.NET 8 listens on 8080 by default
+# ASP.NET listens on 8080 by default
 EXPOSE 8080
 # If you prefer port 80 instead, uncomment the next two lines:
 # ENV ASPNETCORE_URLS=http://+:80
 # EXPOSE 80
 
 # Build / publish
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # === Restore (cache-friendly) ===
